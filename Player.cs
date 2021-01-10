@@ -9,18 +9,45 @@ namespace DZ_8_Collections
     class Player
     {
         public string name { get; set; }
-        Queue<Karta> myKarts = new Queue<Karta>();
-        public Karta Hod()
+        public Queue<Karta> myKarts = new Queue<Karta>();
+        public bool Is_won()
         {
-            try
+            if (myKarts.Count == 36)
             {
-                return myKarts.
+                return true;
             }
-            catch (Exception e)
+            else
+                return false;
+        }
+        public Karta Hod_part1()
+        {
+            Console.WriteLine($"\t{name}: кладу {myKarts.Peek()} осталось на руках {myKarts.Count - 1}");
+            return myKarts.Peek();
+        }
+        public void Hod_part2()
+        {
+            myKarts.Dequeue();
+        }
+        public void TakeKart(Karta k)
+        {
+            Karta newKart = (Karta)k.Clone();
+            Console.WriteLine($"{name}: беру себе {k}");
+            myKarts.Enqueue(newKart);
+        }
+        public override string ToString()
+        {
+            return $"{name} на руках: {myKarts.Count} карт";
+        }
+        public void Show_my_cards()
+        {
+            foreach (var item in myKarts)
             {
-
-                throw;
+                Console.WriteLine($"{name} {item}");
             }
+        }
+        public Player(string name)
+        {
+            this.name = name;
         }
     }
 }

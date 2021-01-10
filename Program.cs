@@ -10,9 +10,16 @@ namespace DZ_8_Collections
     {
         static void Main(string[] args)
         {
-            Player p = new Player();
-            Karta k = new Karta();
+            Player player_1 = new Player("Player_1");
+            Player player_2 = new Player("Player_2");
+            //Player player_3 = new Player("Player_3");
+            player_1.Show_my_cards();
+            player_2.Show_my_cards();
+            Game game = new Game(player_1, player_2/*, player_3*/);
+
             
+
+            Console.ReadKey();
         }
     }
 }
